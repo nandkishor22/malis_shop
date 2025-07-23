@@ -1,4 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Mobile menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded',
+                menuToggle.classList.contains('active') ? 'true' : 'false');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.main-nav') && navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+                
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        history.pushState(null, null, href);
+                    }
+                }
+            });
+        });
+    }
     if (document.querySelector(".contact-form")) {
         document
             .querySelector(".contact-form")
@@ -12,26 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
                 window.open(url, "_blank", "noopener");
 
-                try {
-                    const response = await fetch('./api/save_info.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            costumer_name: name,
-                            costumer_email: email,
-                            costumer_message: message
-                        })
-                    });
-
-                    const result = await response.json();
-                    if (!response.ok || !result.success) throw new Error(result.error || 'Database save failed');
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Order processing failed. Please try again.');
-                }
+                // Immediately open WhatsApp after form submission
+                window.open(url, "_blank", "noopener");
             });
     }
 
@@ -47,30 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     .split('.')[0]    // Remove extension
                     .replace(/\D/g, ''); // Extract numbers only
 
-                try {
-                    const response = await fetch('./api/save_order.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            product_number: product_number,
-                            product_name: name,
-                            price: price
-                        })
-                    });
-
-                    const result = await response.json();
-                    if (!response.ok || !result.success) throw new Error(result.error || 'Database save failed');
-                    
-                    const whatsappNumber = "918421572075";
-                    const text = `NEW ORDER\nProduct:- ${name}\nPrice:- ₹${price}`;
-                    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-                    window.open(url, "_blank", "noopener");
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Order processing failed. Please try again.');
-                }
+                const whatsappNumber = "918421572075";
+                const text = `NEW ORDER\nProduct:- ${name}\nPrice:- ₹${price}`;
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+                window.open(url, "_blank", "noopener");
             });
         });
     }
