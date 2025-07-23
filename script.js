@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar');
+    const searchButton = document.querySelector('.search-container button');
+    
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach(card => {
+            const title = card.querySelector('.product-title').textContent.toLowerCase();
+            card.style.display = title.includes(searchTerm) ? 'flex' : 'none';
+        });
+    }
+
+    if (searchInput && searchButton) {
+        searchInput.addEventListener('input', performSearch);
+        searchButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            performSearch();
+        });
+    }
     // Mobile menu functionality
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
