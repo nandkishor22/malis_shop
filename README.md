@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://malis-shop.example.com)
 
-![Project Logo](./logo/logo.png)
+<img src="./logo/logo.png" width="150" style="display:block;margin:0 auto" />
 
 ## 🎯 Features
 - 🖥️ Responsive web design
@@ -12,7 +12,7 @@
 - 📊 Real-time analytics dashboard
 
 ## 🌐 Live Demo
-Experience the platform live: [https://malis-shop.example.com](https://malis-shop.example.com)
+Experience the platform live: [https://malis-shopp.netlify.app/](https://malis-shopp.netlify.app/)
 
 ## 🚀 Getting Started
 
@@ -22,7 +22,7 @@ Experience the platform live: [https://malis-shop.example.com](https://malis-sho
 
 ### ⚙️ Installation
 ```bash
-git clone https://example.com/malis-shop.git
+git clone https://github.com/nandkishor22/malis_shop.git
 cd malis-shop
 npm install
 ```
@@ -40,7 +40,7 @@ npm start
 | ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) | ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) | ![VSCode](https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white) |
 
 ## 📸 Screenshots
-![Dashboard Preview](./images/kishor.jpg)
+![Dashboard Preview](./images/image.png)
 *Interactive product dashboard with real-time updates*
 
 ## 📜 License
