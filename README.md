@@ -38,8 +38,8 @@ npm start
 | ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) | ![VSCode](https://img.shields.io/badge/VS_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white) |
 
 ## 📸 Screenshots
-![Dashboard Preview](./images/image.png)
-*Interactive product dashboard with real-time updates*
+![Web Preview](./images/image.png)
+
 
 ## 📜 License
 Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
